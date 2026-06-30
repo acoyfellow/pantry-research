@@ -1,0 +1,14 @@
+{
+  "experiment": "E2-cross-agent-determinism",
+  "status": "PASS",
+  "date": "2026-06-30",
+  "runBy": "parent (inline)",
+  "recipe": "slugify",
+  "inputs": ["Harness A vs B!", "Same Recipe 123", "  Edge---Case  "],
+  "harnesses": [
+    {"name": "client+runner (in-process)", "outputs": [{"slug":"harness-a-vs-b"},{"slug":"same-recipe-123"},{"slug":"edge-case"}]},
+    {"name": "MCP server over stdio (separate process)", "outputs": [{"slug":"harness-a-vs-b"},{"slug":"same-recipe-123"},{"slug":"edge-case"}]}
+  ],
+  "identicalAcrossHarnesses": true,
+  "modelCalls": 0
+}

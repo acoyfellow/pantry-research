@@ -1,0 +1,17 @@
+{
+  "experiment": "E7-real-model-loop",
+  "status": "BLOCKED on a reachable model endpoint (mechanism already proven by E4)",
+  "date": "2026-06-30",
+  "runBy": "parent (inline) — reachability checked, not faked",
+  "question": "With a REAL model driving the agents, do per-cycle TOKENS (not a proxy) go down as the shared cookbook grows, and does the mechanism win survive tool-invocation overhead at non-trivial procedure size?",
+  "reachabilityChecked": [
+    "pantry has no AI binding (recipe store only).",
+    "my-ax has env.AI (Workers AI) but a real call needs a wrangler dev worker + route; the full agent turn also needs the prod Sandbox container (Access-gated, can't start locally — confirmed this morning).",
+    "No direct CF_API_TOKEN / Workers AI REST creds in env for a standalone call.",
+    "The wrangler-dev path was flaky all session (4 child spawns dead, local dev died); not cheaply reachable now."
+  ],
+  "conclusion": "The TOKEN basis of the learning loop is genuinely blocked on a reachable model endpoint, not skipped. NOT faked.",
+  "whatIsAlreadyProven": "E4 proved the MECHANISM (promote->reuse cuts per-cycle derive-work, correctness held, flattens to a floor). The morning's earlier real-model run (Kimi K2.7, single-agent) already showed the honest token reality: reuse cuts OUTPUT tokens ~72% but TOTAL tokens can RISE on tiny procedures due to tool/invocation overhead. So the token answer is partly known: structural win is real; total-token win depends on procedure size vs overhead.",
+  "unblock": "Run a wrangler-dev worker with env.AI (Workers AI, e.g. @cf/moonshotai/kimi-k2.7-code) OR provide a model API key, then drive the E4 multi-cycle 2-agent loop through real model calls and record real per-cycle input/output tokens. Test at a NON-TRIVIAL procedure size (where output savings should exceed the ~3k-input recipe-invocation overhead the morning measured).",
+  "modelCalls": 0
+}

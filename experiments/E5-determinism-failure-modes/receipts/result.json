@@ -1,0 +1,22 @@
+{
+  "experiment": "E5-determinism-failure-modes",
+  "status": "PASS (failure modes identified)",
+  "date": "2026-06-30",
+  "runBy": "parent (inline)",
+  "results": {
+    "pure_export_default": {"ok": true, "deterministic": true},
+    "pure_bare_body_ctx": {"ok": true, "deterministic": true},
+    "bare_body_wrong_input": {"ok": false, "deterministic": "n/a — fails 'input is not defined'"},
+    "uses_random_Math.random": {"ok": true, "deterministic": false, "note": "TRUE non-determinism — different output every run"},
+    "uses_time_Date.now": {"ok": true, "deterministic": "FALSE-PASS — two runs hit the same ms; time-dependent in reality"},
+    "uses_date_iso": {"ok": true, "deterministic": "FALSE-PASS — same ms; time-dependent in reality"}
+  },
+  "findings": [
+    "DETERMINISTIC + SAFE to share: pure recipes (export-default or bare-body-using-ctx.input) with no Math.random/Date/time/IO.",
+    "BREAKS: bare function body referencing bare `input` (must be ctx.input, or use export-default which gets (input,ctx)). This is the E3 gotcha as a class — an input-contract mismatch.",
+    "NON-DETERMINISTIC: Math.random is a clear failure (different output every run). Time (Date.now/new Date) is also non-deterministic in reality; my 2-back-to-back-runs probe gave a FALSE PASS because both ran in the same millisecond — the test is too tight to catch time nondeterminism. Honest: do NOT conclude time-recipes are deterministic; the probe just didn't separate the calls."
+  ],
+  "limitation": "The probe ran each shape twice back-to-back. That catches Math.random but NOT sub-ms time variance. A stronger E5b would space runs or inject a clock to prove time-dependence.",
+  "implication": "Sharing safety = a recipe is safe to share/compose iff it is pure (no random/time/IO) AND uses the correct input contract. pantry could lint/flag these at push time (follow-on).",
+  "modelCalls": 0
+}

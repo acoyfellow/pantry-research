@@ -1,0 +1,27 @@
+{
+  "state": "STOP_GATE_MET — northstar clearly achievable; remaining work is 2 named env dependencies + engineering follow-ons",
+  "iteration": 2,
+  "shape": "experiment-only, backward-only, parallel",
+  "northStar": "Agents on different harnesses coordinate via shared deterministic recipes (same recipe, same result, each in its own isolate), compose a dish none made alone, and get faster together as a shared cookbook grows while correctness holds 100%.",
+  "northStarStatus": "CLEARLY ACHIEVABLE — proven by E1-E4 (+E5/E6/E8) with machine-verifiable receipts.",
+  "proven": [
+    "E1 atomic determinism (receipt)",
+    "E2 cross-agent determinism — client + MCP-stdio byte-identical (receipt)",
+    "E3 composition — 2 agents + 2 recipes -> a dish, necessity confirmed (receipt)",
+    "E4 learning loop MECHANISM — promote->reuse trend down, correctness held, floor (receipt)",
+    "E5 determinism failure modes characterized — pure=safe, Math.random/time/bad-input-contract=unsafe (receipt)",
+    "E6 discovery degrades linearly ~63 tok/recipe; flat list does not scale past ~dozens (receipt)",
+    "E8 provenance carries on shared recipes (mechanism) (receipt)"
+  ],
+  "namedBlockers": [
+    "E7 real-model token economics — needs a reachable model endpoint (Workers AI route / model key). Mechanism proven; token reality partly known from the morning (structural win real; total-token win depends on procedure size vs overhead).",
+    "E8 true cross-owner — needs a 2nd owner token (A runs B's shared recipe; A cannot read B's private)."
+  ],
+  "engineeringFollowOns": [
+    "E6b: a query/filter/ranked discovery endpoint so discovery cost is bounded by relevance, not cookbook size",
+    "E5b: a stronger time-nondeterminism probe (space runs / inject a clock)",
+    "push-time purity lint (flag Math.random/time/IO + bad input contract at push)"
+  ],
+  "stopGate": "MET — (a) every substrate question is answered-with-a-receipt; the only unproven pieces are 2 named bounded env dependencies; (b) the north star is clearly achievable. Loop stopped.",
+  "receipts": "experiments/E1..E8/receipts/result.json"
+}

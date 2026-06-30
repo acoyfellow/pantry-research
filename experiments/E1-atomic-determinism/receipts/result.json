@@ -1,0 +1,16 @@
+{
+  "experiment": "E1-atomic-determinism",
+  "status": "PASS",
+  "date": "2026-06-30",
+  "runBy": "parent (spawn layer dead; run inline per protocol)",
+  "recipe": "slugify",
+  "codeHash": "c3f9bf75c49b5bf6",
+  "inputs": ["My First Pantry Recipe!", "Deja Vu: 100% Real???", "   trailing and leading   ", "CamelCase MixedThings"],
+  "outputs": [{"slug":"my-first-pantry-recipe"},{"slug":"deja-vu-100-real"},{"slug":"trailing-and-leading"},{"slug":"camelcase-mixedthings"}],
+  "runs": 5,
+  "identicalAcrossRuns": true,
+  "freshProcessIdentical": true,
+  "matchesOracle": true,
+  "reDerivation": "none — logic came from fetched recipe.code, agent supplied input only",
+  "modelCalls": 0
+}

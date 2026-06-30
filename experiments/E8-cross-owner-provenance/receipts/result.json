@@ -1,0 +1,14 @@
+{
+  "experiment": "E8-cross-owner-provenance",
+  "status": "PARTIAL — provenance mechanism PROVEN; true cross-owner BLOCKED on a 2nd owner token",
+  "date": "2026-06-30",
+  "runBy": "parent (inline)",
+  "proven": [
+    "A shared recipe (visibility:shared) appears in GET /recipes?scope=shared WITH an 'author' field (= owner identity 'default') — provenance carries on the shared list entry.",
+    "Shared entry keys: name, description, inputSchema, capabilities, status, version, sourceRunId, visibility, author, updatedAt (no code in the list — correct).",
+    "get on the shared recipe returns the exact code; running it works (echo:'provenance!')."
+  ],
+  "blocked": "TRUE cross-owner (owner A runs owner B's shared recipe, and A sees B as author) requires a SECOND owner token. Only one owner token is available this session. The MECHANISM (author provenance + shared read + run) is proven; the cross-owner trust scenario is named-blocked, not failed.",
+  "implication": "Provenance is informational metadata (author owner), not enforced permission — consistent with the trust posture. Follow-on E8b: with a 2nd owner token, verify A runs B's shared recipe, sees B's author tag, and that A canNOT read B's PRIVATE recipes (cross-owner isolation under sharing).",
+  "modelCalls": 0
+}

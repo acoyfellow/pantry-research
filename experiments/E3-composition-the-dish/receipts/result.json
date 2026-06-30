@@ -1,0 +1,16 @@
+{
+  "experiment": "E3-composition-the-dish",
+  "status": "PASS",
+  "date": "2026-06-30",
+  "runBy": "parent (inline; two separate bun processes)",
+  "recipeX": "e3_normalize_status",
+  "recipeY": "e3_status_digest",
+  "agentA": {"process": 1, "input": {"line": "service api latency 188ms errors 0 region sfo"}, "intermediate": {"region":"sfo","latencyMs":188,"errors":0,"health":"ok"}},
+  "handoff": "Agent A wrote intermediate to /tmp/e3-handoff.json; Agent B (separate process) read it",
+  "agentB": {"process": 2, "intermediate": {"region":"sfo","latencyMs":188,"errors":0,"health":"ok"}, "dish": {"digest":"sfo: ok (188ms, 0 errors)"}},
+  "dishMatchesOracle": true,
+  "requiresBothAgents": true,
+  "requiresBothRecipes": true,
+  "modelCalls": 0,
+  "finding": "Recipe CODE SHAPE matters for cross-agent composition: a bare function body references ctx.input, but export-default/module.exports receive (input, ctx). A recipe authored as bare body using `input` fails with 'input is not defined'. Shared recipes must declare/normalize their input contract or composition breaks at the handoff."
+}

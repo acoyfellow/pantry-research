@@ -1,0 +1,21 @@
+{
+  "experiment": "E6-discovery-at-scale",
+  "status": "PASS (degradation quantified)",
+  "date": "2026-06-30",
+  "runBy": "parent (inline)",
+  "method": "Measured the list-projection (names+desc+schema+caps, NO code) payload bytes + gpt-tokenizer count for cookbooks of N=4..500. Synthesized realistic entries (did not push 500 to prod — abusive). Real list-entry shape.",
+  "results": {
+    "n=4": {"tokens": 255, "perRecipe": 64},
+    "n=10": {"tokens": 633, "perRecipe": 63},
+    "n=50": {"tokens": 3153, "perRecipe": 63},
+    "n=200": {"tokens": 12603, "perRecipe": 63},
+    "n=500": {"tokens": 31503, "perRecipe": 63}
+  },
+  "findings": [
+    "Discovery cost grows LINEARLY: ~63 tokens per recipe in the list projection (code excluded).",
+    "At ~50 recipes (3K tokens) discovery is still cheap; at 200 (12.6K) it is heavy; at 500 (31.5K) the list ALONE is a context-firehose before the agent picks one.",
+    "This is the predicted 'matching, not storage' bottleneck: pantry stores fine at any scale, but a FLAT list does not scale for an AGENT to read and choose from. Past a few dozen recipes you need search/filter/ranking/embeddings, not a full list dump."
+  ],
+  "implication": "Follow-on E6b: add a search/filter endpoint (GET /recipes?q= or capability/tag filter) so discovery cost is bounded by relevance, not cookbook size. The hub gets slower to USE as it gets more valuable to HAVE — unless discovery is indexed.",
+  "modelCalls": 0
+}

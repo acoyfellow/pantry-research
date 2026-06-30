@@ -1,0 +1,20 @@
+{
+  "experiment": "E4-learning-loop",
+  "status": "PASS (mechanism basis; model basis not run)",
+  "date": "2026-06-30",
+  "runBy": "parent (inline)",
+  "cycles": [
+    {"n":1,"messages":6,"stepsDerived":2,"stepsReused":0,"recipesPromoted":["e4_normalize","e4_digest"],"correct":true},
+    {"n":2,"messages":2,"stepsDerived":0,"stepsReused":2,"recipesPromoted":[],"correct":true},
+    {"n":3,"messages":2,"stepsDerived":0,"stepsReused":2,"recipesPromoted":[],"correct":true},
+    {"n":4,"messages":2,"stepsDerived":0,"stepsReused":2,"recipesPromoted":[],"correct":true}
+  ],
+  "trend": "down",
+  "flattensToFloor": true,
+  "floor": 2,
+  "allCorrect": true,
+  "basis": "mechanism",
+  "modelReachable": false,
+  "honestLimit": "The 'messages' metric is a MECHANISM PROXY (derive=3 turns, reuse=1 fetch+run), NOT real model tokens. It proves the STRUCTURAL claim — promote-then-reuse reduces per-cycle derive-work while correctness holds, flattening to a floor — across a 2-step coordinated task with a shared cookbook. It does NOT prove token economics; the morning's real-model run showed total tokens can rise on small procedures due to tool/invocation overhead. A real-model E4 needs a reachable agent model; the mechanism is otherwise proven.",
+  "modelCalls": 0
+}
