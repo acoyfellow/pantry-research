@@ -75,6 +75,6 @@ about which ran.
 
 ## Paths
 
-- pantry-research: /Users/jcoeyman/cloudflare/pantry-research
-- pantry (the substrate under test): /Users/jcoeyman/cloudflare/pantry (live pantry.coey.dev)
-- Think (a cook; reference, not target): @cloudflare/think in /Users/jcoeyman/cloudflare/my-ax/node_modules
+- pantry-research: ../pantry-research
+- pantry (the substrate under test): ../pantry (live pantry.coey.dev)
+- Think (a cook; reference, not target): @cloudflare/think in a sibling project node_modules

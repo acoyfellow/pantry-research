@@ -1,3 +1,4 @@
 .dev.vars
 .guardrail/
 node_modules/
+.DS_Store
